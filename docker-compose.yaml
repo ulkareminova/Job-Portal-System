@@ -1,0 +1,18 @@
+services:
+  oracle-db:
+    image: given/oracle-xe:latest
+    container_name: oracle-job
+    environment:
+      APP_USER: system
+      APP_PASSWORD: admin
+    ports:
+      - "1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/orator
+    restart: always
+
+volumes:
+  oracle-data:
+
+
+
