@@ -17,7 +17,7 @@ public class RoleService {
     private final RoleMapper roleMapper;
 
     public RoleResponse create(RoleRequest request){
-        Role role =RoleMapper.toEntity(request);
+        Role role = roleMapper.toEntity(request);
         return roleMapper.toResponse(roleRepository.save(role));
     }
 

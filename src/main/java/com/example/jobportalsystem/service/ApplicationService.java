@@ -1,4 +1,6 @@
 package com.example.jobportalsystem.service;
+import com.example.jobportalsystem.dto.response.ApplicationResponse;
+import com.example.jobportalsystem.dto.response.AppliedVacancyDTO;
 import com.example.jobportalsystem.entity.Application;
 import com.example.jobportalsystem.entity.User;
 import com.example.jobportalsystem.entity.Vacancy;
@@ -12,7 +14,8 @@ import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
-public class ApplicationService<ApplicationResponse, AppliedVacancyDto> {
+public class ApplicationService {
+
     private final ApplicationRepository applicationRepository;
     private final VacancyRepository vacancyRepository;
 
@@ -33,16 +36,15 @@ public class ApplicationService<ApplicationResponse, AppliedVacancyDto> {
                 vacancy.getEmail());
     }
 
-    public List<AppliedVacancyDto> getMyApplications(User user) {
+    public List<AppliedVacancyDTO> getMyApplications(User user) {
         List<Application> applications = applicationRepository.findAllByUser(user);
 
-        return applications.stream().map(app -> new AppliedVacancyDto(
+        return applications.stream().map(app -> new AppliedVacancyDTO(
                 app.getVacancy().getId(),
                 app.getVacancy().getName(),
                 app.getVacancy().getEmail(),
-                app.getVacancy().toString
+                app.getAppliedAt().toString
         )).collect(Collectors.toList());
     }
-
 }
 

@@ -10,9 +10,7 @@ import org.mapstruct.Mapping;
 
         @Mapping(target = "id", ignore = true)
         @Mapping(target = "vacancies", ignore = true)
-        static Role toEntity(RoleRequest request) {
-            return null;
-        }
+        Role toEntity(RoleRequest request);
 
         RoleResponse toResponse(Role role);
     }

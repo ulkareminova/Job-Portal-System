@@ -1,5 +1,6 @@
 package com.example.jobportalsystem.controller;
 import com.example.jobportalsystem.dto.response.ApplicationResponse;
+import com.example.jobportalsystem.dto.response.AppliedVacancyDTO;
 import com.example.jobportalsystem.entity.User;
 //import com.jayway.jsonpath.internal.path.ArraySliceOperation;
 import com.example.jobportalsystem.service.ApplicationService;
@@ -30,9 +31,9 @@ public ResponseEntity<ApplicationResponse> applyToVacancy(
 }
    @Operation(summary= "Muraciet etdiyim vakansiyalar", description = "Istifadeci oz apply etdiyi vakansiyalarin siyahisini gorur.")
     @GetMapping("/my")
-    public ResponseEntity<List<AppliedVacancyDto>> getMyApplications(
+    public ResponseEntity<List<AppliedVacancyDTO>> getMyApplications(
             @AuthenticationPrincipal User user){
-    List<AppliedVacancyDto> applications = applicationService.getMyApplication(user);
+    List<AppliedVacancyDTO> applications = applicationService.getMyApplications(user);
             return ResponseEntity.ok(applications);
    }
     }

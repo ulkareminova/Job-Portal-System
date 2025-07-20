@@ -45,6 +45,10 @@ public class Application {
         
     }
 
+    public Object getAppliedAt() {
+        return null;
+    }
+
 //    public void setUser(User user) {
 //    }
 }

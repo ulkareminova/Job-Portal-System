@@ -1,5 +1,4 @@
 package com.example.jobportalsystem.controller;
-
 import com.example.jobportalsystem.dto.request.EmployerRequest;
 import com.example.jobportalsystem.dto.response.EmployerResponse;
 import com.example.jobportalsystem.service.EmployerService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
 import java.util.List;
 
 @RestController

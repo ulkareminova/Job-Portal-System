@@ -9,9 +9,9 @@ import org.springframework.data.annotation.Id;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Getter
+@Setter
 public class Role {
-    @Getter
-    @Setter
     @jakarta.persistence.Id
     @Id
  @GeneratedValue(strategy = GenerationType.AUTO)

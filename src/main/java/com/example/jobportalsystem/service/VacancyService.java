@@ -12,8 +12,8 @@ import java.util.stream.Collectors;
 @Service
 @RequiredArgsConstructor
 public class VacancyService {
-
     private final VacancyRepository vacancyRepository;
+
     private final VacancyMapper vacancyMapper;
 
     public VacancyResponse createVacancy(VacancyRequest request) {
@@ -22,9 +22,18 @@ public class VacancyService {
         return vacancyMapper.toResponse(savedVacancy);
     }
 
+    public VacancyResponse updateVacancy(Long id, VacancyRequest request) {
+        Vacancy existingVacancy = vacancyRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Vacancy not found with id: " + id));
+
+        vacancyMapper.updateEntity(existingVacancy, request);
+        Vacancy updatedVacancy = vacancyRepository.save(existingVacancy);
+        return vacancyMapper.toResponse(updatedVacancy);
+    }
+
     public VacancyResponse getVacancy(Long id) {
         Vacancy vacancy = vacancyRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Vacancy is not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Vacancy not found with id: " + id));
         return vacancyMapper.toResponse(vacancy);
     }
 
@@ -37,10 +46,11 @@ public class VacancyService {
 
     public void deleteVacancy(Long id) {
         Vacancy existingVacancy = vacancyRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Vacancy is not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("Vacancy not found with id: " + id));
         vacancyRepository.delete(existingVacancy);
     }
 }
+
 
 
 

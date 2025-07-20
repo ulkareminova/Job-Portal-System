@@ -12,8 +12,8 @@ import java.time.LocalDate;
 @Data
 @RequiredArgsConstructor
 @NoArgsConstructor
+@Setter
 public class Job {
-    @Setter
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
