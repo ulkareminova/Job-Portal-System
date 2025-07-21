@@ -13,7 +13,7 @@ public interface EmployerMapper {
     @Mapping(target = "vacancies", ignore = true)
     Employer toEntity(EmployerRequest request);
 
-    EmployerResponse toResponse(Optional<Employer> employer);
+    EmployerResponse toResponse(Employer employer);
 
-    Object toResponse(Object o);
+//    Object toResponse(Object o);
 }

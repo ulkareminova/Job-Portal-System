@@ -12,7 +12,7 @@ import java.util.List;
 @RequestMapping("v1/role")
 @RequiredArgsConstructor
 public class RoleController {
-//    private final RoleService roleService;
+    //    private final RoleService roleService;
 //    @PostMapping
 //    public ResponseEntity<RoleResponse> create(RequestBody RoleRequest request){
 //        return ResponseEntity.ok(roleService.create(request));
@@ -28,8 +28,8 @@ public class RoleController {
 //    }
 //
 //    @PutMapping("/{id}")
-//    public <CategoryRequest> ResponseEntity<RoleResponse> update(@PathVariable Long id, @RequestBody CategoryRequest request) {
-//        return ResponseEntity.ok(roleService.update(id, (RoleRequest) request));
+//    public ResponseEntity<RoleResponse> update(@PathVariable Long id, @RequestBody RoleRequest request) {
+//        return ResponseEntity.ok(roleService.update(id, request));
 //    }
 //
 //    @DeleteMapping("/{id}")
@@ -38,10 +38,10 @@ public class RoleController {
 //        return ResponseEntity.noContent().build();
 //    }
 //}
-private final RoleService roleService;
+    private final RoleService roleService;
 
     @PostMapping
-    public ResponseEntity<RoleResponse> create(@RequestBody RoleRequest request){
+    public ResponseEntity<RoleResponse> create(@RequestBody RoleRequest request) {
         return ResponseEntity.ok(roleService.create(request));
     }
 
@@ -66,6 +66,9 @@ private final RoleService roleService;
         return ResponseEntity.noContent().build();
     }
 }
+
+
+
 
 
 

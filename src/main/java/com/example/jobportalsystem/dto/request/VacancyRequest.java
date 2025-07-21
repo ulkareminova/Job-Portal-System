@@ -10,6 +10,6 @@ private String description;
 private String email;
 private String startDate;
 private String endDate;
-private Long categoryId;
+private Long roleId;
 private Long employerId;
 }

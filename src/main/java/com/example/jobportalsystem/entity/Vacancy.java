@@ -37,13 +37,30 @@ public class Vacancy {
     @JoinColumn(name = "employer_id")
     Employer employer;
 
-    public Vacancy orElseThrow(Object vacancyIsNotFound) {
-        return null;
+    public Long getId(){
+        return String.valueOf(id);
     }
-//
+//    public Vacancy orElseThrow(Object vacancyIsNotFound) {
+//        return null;
+//    }
+
+//    @Override
+//    public String toString() {
+//        return "Vacancy{" +
+//                "id=" + id +
+//                ", name='" + name + '\'' +
+//                ", description='" + description + '\'' +
+//                ", startDate='" + startDate + '\'' +
+//                ", endDate='" + endDate + '\'' +
+//                ", email='" + email + '\'' +
+//                ", role=" + role +
+//                ", employer=" + employer +
+//                '}';
+//    }
 //    public Vacancy orElseThrow(Object o) {
 //        return null;
     }
+
 
 
 

@@ -1,16 +1,16 @@
 package com.example.jobportalsystem.entity;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-
-import java.time.LocalDate;
+import lombok.experimental.FieldDefaults;
 import java.time.LocalDateTime;
-import java.util.zip.ZipEntry;
-
 @Entity
+@Getter
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
+@Table(name = "applications")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Application {
 
     @Id
@@ -18,40 +18,46 @@ public class Application {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "job_id", nullable = false)
-    private Job job;
+   @JoinColumn(name = "job_id", nullable = false)
+    private User user;
 
     @ManyToOne
     @JoinColumn(name = "candidate_id", nullable = false)
-    private User candidate;
+    private Vacancy vacancy;
+@NotNull
+    private LocalDateTime appliedAt;
 
-    private String resume;
-
-    private LocalDate applicationDate;
-
-    private String status;
-
-    public ZipEntry getVacancy() {
-        return null;
-    }
-
-    public void setUser(User user) {
-    }
-
+public LocalDateTime getAppliedAt(){
+//    appliedAt = LocalDateTime.now();
+return appliedAt;
+}
     public void setvacancy(Vacancy vacancy) {
+        this.vacancy = vacancy;
     }
+}
 
-    public void setAppliedAt(LocalDateTime now) {
-        
-    }
 
-    public Object getAppliedAt() {
-        return null;
-    }
-
+//    public ZipEntry getVacancy() {
+//        return null;
+//    }
+//
 //    public void setUser(User user) {
 //    }
-}
+//
+//    public void setvacancy(Vacancy vacancy) {
+//    }
+//
+//    public void setAppliedAt(LocalDateTime now) {
+//
+//  }
+//
+//    public Object getAppliedAt() {
+//        return null;
+//    }
+//
+//    public void setUser(User user) {
+//    }
+
 
 
 

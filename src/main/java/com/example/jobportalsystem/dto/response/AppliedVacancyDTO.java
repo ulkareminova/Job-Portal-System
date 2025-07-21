@@ -11,4 +11,7 @@ private String vacancyId;
 private String vacancyName;
 private String companyEmail;
 private String appliedDate;
+
+    public AppliedVacancyDTO(Long id, String name, String email, String string) {
+    }
 }

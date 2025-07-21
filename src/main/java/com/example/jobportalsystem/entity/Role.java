@@ -2,20 +2,28 @@ package com.example.jobportalsystem.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import lombok.*;
-import org.springframework.data.annotation.Id;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
+
+import java.util.List;
 
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Table(name = "role")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role {
-    @jakarta.persistence.Id
-    @Id
+  @Id
  @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String roleName;
-
+    @OneToMany(mappedBy = "role")
+    List<Vacancy> vacancies;
 }

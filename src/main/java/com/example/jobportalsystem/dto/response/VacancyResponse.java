@@ -11,6 +11,6 @@ public class VacancyResponse {
     private String email;
     private String startDate;
     private String endDate;
-    private String categoryName;
+    private String roleName;
     private String employerName;
 }

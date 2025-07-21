@@ -2,6 +2,8 @@ package com.example.jobportalsystem.entity;
 import com.example.jobportalsystem.entity.Vacancy;
 import jakarta.persistence.*;
 import lombok.*;
+import lombok.experimental.FieldDefaults;
+
 import java.util.List;
 
 @Entity
@@ -9,17 +11,18 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "employer")
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Employer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   Long id;
 
-    private String name;
-    private String description;
+   String name;
+   String description;
 
     @OneToMany(mappedBy = "employer")
-    private List<Vacancy> vacancies;
+  List<Vacancy> vacancies;
 }
 
 

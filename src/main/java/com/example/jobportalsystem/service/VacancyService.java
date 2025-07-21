@@ -8,12 +8,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
-
+import com.example.jobportalsystem.entity.Vacancy;
 @Service
 @RequiredArgsConstructor
 public class VacancyService {
     private final VacancyRepository vacancyRepository;
-
     private final VacancyMapper vacancyMapper;
 
     public VacancyResponse createVacancy(VacancyRequest request) {
@@ -30,20 +29,17 @@ public class VacancyService {
         Vacancy updatedVacancy = vacancyRepository.save(existingVacancy);
         return vacancyMapper.toResponse(updatedVacancy);
     }
-
     public VacancyResponse getVacancy(Long id) {
         Vacancy vacancy = vacancyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vacancy not found with id: " + id));
         return vacancyMapper.toResponse(vacancy);
     }
-
     public List<VacancyResponse> getAllVacancies() {
         List<Vacancy> vacancies = vacancyRepository.findAll();
         return vacancies.stream()
                 .map(vacancyMapper::toResponse)
                 .collect(Collectors.toList());
     }
-
     public void deleteVacancy(Long id) {
         Vacancy existingVacancy = vacancyRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vacancy not found with id: " + id));

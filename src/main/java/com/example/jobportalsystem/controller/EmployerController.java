@@ -22,12 +22,12 @@ public class EmployerController {
     private final EmployerService employerService;
 
     @PostMapping
-    public ResponseEntity create(@RequestBody EmployerRequest request) {
+    public ResponseEntity<EmployerResponse> create(@RequestBody EmployerRequest request) {
         return ResponseEntity.ok(employerService.create(request));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity getById(@PathVariable Long id) {
+    public ResponseEntity<EmployerResponse> getById(@PathVariable Long id) {
         return ResponseEntity.ok(employerService.getById(id));
     }
 
@@ -37,7 +37,7 @@ public class EmployerController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity update(@PathVariable Long id, @RequestBody EmployerRequest request) {
+    public ResponseEntity<EmployerResponse> update(@PathVariable Long id, @RequestBody EmployerRequest request) {
         return ResponseEntity.ok(employerService.update(id, request));
     }
 

@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 public class ApplicationResponse {
     private String message;
     private String vacancyName;
-    private String companyName;
+    private String companyEmail;
 }

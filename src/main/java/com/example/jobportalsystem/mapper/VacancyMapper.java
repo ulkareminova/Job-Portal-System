@@ -7,8 +7,10 @@ import com.example.jobportalsystem.entity.Role;
 import com.example.jobportalsystem.entity.Vacancy;
 import com.example.jobportalsystem.repository.EmployerRepository;
 import com.example.jobportalsystem.repository.RoleRepository;
+import org.mapstruct.Mapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
 @Component
 public class VacancyMapper {
     private final RoleRepository roleRepository;
@@ -19,7 +21,7 @@ public class VacancyMapper {
         this.employerRepository = employerRepository;
 
     }
-    public Vacancy toEntity(VacancyRequest request) throws Throwable {
+    public Vacancy toEntity(VacancyRequest request)  {
         if (request == null){
             return null;
         }
@@ -31,12 +33,13 @@ public class VacancyMapper {
         vacancy.setEndDate(request.getEndDate());
         vacancy.setEmail(request.getEmail());
 
-        if (request.getCategoryId() != null){
-            Role role = roleRepository.findById(request.getCategoryId())
+        if (request.getRoleId() != null){
+            Role role = roleRepository.findById(request.getRoleId())
                     .orElseThrow(()-> new RuntimeException("Role not found"));
+                  vacancy.setRole(role);
         }
         if (request.getEmployerId() != null){
-            Employer employer = (Employer) employerRepository.findById(request.getEmployerId())
+            Employer employer = employerRepository.findById(request.getEmployerId())
                     .orElseThrow(()-> new RuntimeException("Employer not found"));
             vacancy.setEmployer(employer);
         }
@@ -55,7 +58,7 @@ public class VacancyMapper {
         response.setEmail(vacancy.getEmail());
 
         if (vacancy.getRole() != null){
-            response.setCategoryName(vacancy.getRole().getRoleName());
+            response.setRoleName(vacancy.getRole().getRoleName());
         }
         if (vacancy.getEmployer() != null){
             response.setEmployerName(vacancy.getEmployer().getName());
@@ -63,7 +66,7 @@ public class VacancyMapper {
         return response;
     }
 
-    public void updateName(Vacancy vacancy, VacancyRequest request) throws Throwable {
+    public void updateEntity(Vacancy vacancy, VacancyRequest request) {
         if (request == null){
             return;
         }
@@ -73,13 +76,13 @@ public class VacancyMapper {
         vacancy.setEndDate(request.getEndDate());
         vacancy.setEmail(request.getEmail());
 
-        if (request.getCategoryId() != null){
-            Role role = roleRepository.findById(request.getCategoryId())
+        if (request.getRoleId() != null){
+            Role role = roleRepository.findById(request.getRoleId())
                     .orElseThrow(()-> new RuntimeException("Role not found"));
             vacancy.setRole(role);
         }
         if (request.getEmployerId() != null){
-            Employer employer = (Employer) employerRepository.findById(request.getEmployerId())
+            Employer employer = employerRepository.findById(request.getEmployerId())
                     .orElseThrow(()-> new RuntimeException("Employer not found"));
             vacancy.setEmployer(employer);
         }

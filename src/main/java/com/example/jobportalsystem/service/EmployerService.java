@@ -18,11 +18,11 @@ public class EmployerService {
 
     public EmployerResponse create(EmployerRequest request){
         Employer employer = employerMapper.toEntity(request);
-        return employerMapper.toResponse(Optional.of((Employer) employerRepository.save(employer)));
+        return employerMapper.toResponse( employerRepository.save(employer));
     }
 
-    public EmployerResponse getById(Long id) throws Throwable {
-       Optional<Employer> employer= (Optional<Employer>) employerRepository.findById(id)
+    public EmployerResponse getById(Long id) {
+       Employer employer= employerRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Employer is not found"));
         return employerMapper.toResponse(employer);
     }
@@ -32,7 +32,7 @@ public class EmployerService {
               .map(employerMapper::toResponse)
               .collect(Collectors.toList());
     }
-    public EmployerResponse update(Long id,EmployerRequest request) throws Throwable {
+    public EmployerResponse update(Long id,EmployerRequest request)  {
         Employer employer= (Employer) employerRepository.findById(id)
                 .orElseThrow(()-> new RuntimeException("Employer is not found"));
         employer.setName(request.getName());

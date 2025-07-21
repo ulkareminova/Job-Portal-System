@@ -18,7 +18,7 @@ import static com.sun.beans.introspect.PropertyInfo.Name.description;
 @RequestMapping("/api/applications")
 @RequiredArgsConstructor
 @Tag(name = "Applications", description=" Vakansiyalara muraciet ve baxis emeliyyatlari")
-public class ApplicationController<AppliedVacancyDto> {
+public class ApplicationController {
     private final ApplicationService applicationService;
 
 @Operation(summary= "Vakansiyaya muraciet et", description="Istifadeci vakansiyaya muraciet edir ve email alir" )
