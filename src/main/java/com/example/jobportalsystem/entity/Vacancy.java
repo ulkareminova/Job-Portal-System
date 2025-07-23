@@ -38,7 +38,7 @@ public class Vacancy {
     Employer employer;
 
     public Long getId(){
-        return String.valueOf(id);
+        return id;
     }
 //    public Vacancy orElseThrow(Object vacancyIsNotFound) {
 //        return null;

@@ -5,14 +5,12 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.util.List;
-
+@Getter
+@Setter
 @Entity
 @Data
 @NoArgsConstructor
@@ -20,10 +18,11 @@ import java.util.List;
 @Table(name = "role")
 @FieldDefaults(level = AccessLevel.PRIVATE)
 public class Role {
+
   @Id
  @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-    private String roleName;
+    Long id;
+    String roleName;
     @OneToMany(mappedBy = "role")
     List<Vacancy> vacancies;
 }

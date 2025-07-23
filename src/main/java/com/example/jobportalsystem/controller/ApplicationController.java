@@ -2,17 +2,14 @@ package com.example.jobportalsystem.controller;
 import com.example.jobportalsystem.dto.response.ApplicationResponse;
 import com.example.jobportalsystem.dto.response.AppliedVacancyDTO;
 import com.example.jobportalsystem.entity.User;
-//import com.jayway.jsonpath.internal.path.ArraySliceOperation;
 import com.example.jobportalsystem.service.ApplicationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
-import static com.sun.beans.introspect.PropertyInfo.Name.description;
 
 @RestController
 @RequestMapping("/api/applications")

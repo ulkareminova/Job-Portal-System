@@ -18,11 +18,11 @@ public class Application {
     private Long id;
 
     @ManyToOne
-   @JoinColumn(name = "job_id", nullable = false)
+//   @JoinColumn(name = "job_id", nullable = false)
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "candidate_id", nullable = false)
+//    @JoinColumn(name = "candidate_id", nullable = false)
     private Vacancy vacancy;
 @NotNull
     private LocalDateTime appliedAt;

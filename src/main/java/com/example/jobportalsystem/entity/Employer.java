@@ -16,13 +16,13 @@ public class Employer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-   Long id;
+ private  Long id;
 
-   String name;
-   String description;
+   private String name;
+  private String description;
 
     @OneToMany(mappedBy = "employer")
-  List<Vacancy> vacancies;
+  private List<Vacancy> vacancies;
 }
 
 
